@@ -1,13 +1,13 @@
 import { Link } from "react-router-dom";
+
 import SideImageComponent from "../components/SideImageComponent";
+import AppLogoComponent from "../components/AppLogoComponent";
 
 const Register = () => {
   return (
     <div className="min-h-screen grid grid-cols-12 text-black/80">
       <div className="col-span-7 p-10">
-        <div>
-          <img className="h-12 mx-10" src="./logo.png" alt="logo" />
-        </div>
+        <AppLogoComponent />
         <div className="my-10 flex justify-center">
           <div className="">
             <h1 className="text-3xl font-semibold">
