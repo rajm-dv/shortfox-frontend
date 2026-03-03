@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import SideImageComponent from "../components/SideImageComponent";
 
 const Register = () => {
   return (
@@ -53,12 +54,7 @@ const Register = () => {
           </div>
         </div>
       </div>
-      <div className="col-span-5 flex flex-col justify-center items-center bg-slate-100">
-        <img src="./user1.svg" alt="user" />
-        <p className="font-semibold my-5">
-          Connect Shortfox to the tools you use every day
-        </p>
-      </div>
+      <SideImageComponent src="user1.svg" alt="Register User" />
     </div>
   );
 };
