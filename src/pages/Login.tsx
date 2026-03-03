@@ -7,7 +7,9 @@ const Login = () => {
   return (
     <div className="min-h-screen grid grid-cols-12 text-black/80">
       <div className="col-span-7 p-10">
-        <AppLogoComponent />
+        <div className="px-10">
+          <AppLogoComponent />
+        </div>
         <div className="my-10 flex justify-center">
           <div className="">
             <h1 className="text-3xl font-semibold">Log in and start sharing</h1>

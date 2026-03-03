@@ -1,5 +1,5 @@
 const AppLogoComponent = () => {
-  return <img className="h-12 mx-10" src="./logo.png" alt="logo" />;
+  return <img className="h-12" src="./logo.png" alt="logo" />;
 };
 
 export default AppLogoComponent;
