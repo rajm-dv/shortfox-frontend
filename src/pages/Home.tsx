@@ -1,3 +1,4 @@
+import Footer from "../components/Footer";
 import Navbar from "../components/Navbar";
 
 const Home = () => {
@@ -33,6 +34,8 @@ const Home = () => {
           </button>
         </div>
       </main>
+      <hr className="border-slate-300 mx-20" />
+      <Footer />
     </>
   );
 };
