@@ -39,6 +39,7 @@ const Dashboard = () => {
           </div>
         </div>
         <div className="col-span-8">
+          <h1 className="text-3xl font-semibold">Dashboard & Analytics</h1>
           <div>Hwllo</div>
         </div>
       </main>
