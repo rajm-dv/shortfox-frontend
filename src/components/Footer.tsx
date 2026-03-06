@@ -3,7 +3,7 @@ import AppLogoComponent from "./AppLogoComponent";
 
 const Footer = () => {
   return (
-    <footer className="flex justify-between items-center px-20 py-10">
+    <footer className="flex justify-between items-center py-10">
       <div>
         <AppLogoComponent />
       </div>

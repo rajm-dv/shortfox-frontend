@@ -4,9 +4,9 @@ import Navbar from "../components/Navbar";
 
 const Home = () => {
   return (
-    <>
+    <div className="px-20">
       <Navbar />
-      <main className="px-20 my-12 flex flex-col items-center text-black/80">
+      <main className="my-12 flex flex-col items-center text-black/80">
         <div className="max-w-4xl text-center">
           <h1 className="text-5xl font-bold">
             Build stronger digital connections
@@ -36,9 +36,9 @@ const Home = () => {
           </button>
         </div>
       </main>
-      <hr className="border-slate-300 mx-20" />
+      <hr className="border-slate-300" />
       <Footer />
-    </>
+    </div>
   );
 };
 

@@ -3,7 +3,7 @@ import AppLogoComponent from "./AppLogoComponent";
 
 const Navbar = () => {
   return (
-    <nav className="py-6 px-20 flex justify-between items-center">
+    <nav className="py-6 flex justify-between items-center">
       <AppLogoComponent />
       <div className="space-x-4">
         <Link
