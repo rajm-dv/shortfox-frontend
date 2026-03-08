@@ -4,9 +4,9 @@ const Dashboard = () => {
   return (
     <div className="grid grid-cols-12">
       <div className="col-span-3 bg-slate-300 h-dvh sticky top-0">
-        <div className="flex p-6 bg-orange-500">
+        <div className="flex p-6 bg-blue-500">
           <div className="flex items-center">
-            <div className="bg-white text-orange-500 rounded-full size-11 flex items-center justify-center text-3xl font-semibold">
+            <div className="bg-white text-blue-700 rounded-full size-11 flex items-center justify-center text-3xl font-semibold">
               R
             </div>
             <div className="ml-3 italic">
@@ -19,7 +19,7 @@ const Dashboard = () => {
           <p className="text-lg font-medium">Change password</p>
           <input
             name="newPassword"
-            type="password"
+            type="text"
             className="w-full border border-slate-500 h-12 indent-2 placeholder:text-slate-500"
             placeholder="Enter new password"
           />
@@ -29,7 +29,9 @@ const Dashboard = () => {
             className="w-full border border-slate-500 h-12 indent-2 placeholder:text-slate-500"
             placeholder="Enter current password"
           />
-          <button className="h-12 bg-green-500 font-medium w-full hover:bg-green-600 text-white">Update</button>
+          <button className="h-12 bg-green-500 font-medium w-full hover:bg-green-600 text-white">
+            Update
+          </button>
         </div>
       </div>
       <div className="col-span-9 px-8">
