@@ -1,23 +1,31 @@
 import { Link, useNavigate } from "react-router-dom";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 import SideImageComponent from "../components/SideImageComponent";
 import AppLogoComponent from "../components/AppLogoComponent";
 import useAuthStore from "../store/auth";
+import toast from "react-hot-toast";
 
 const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const { login } = useAuthStore();
+
+  const { login, isLoading, isAuthenticated, error } = useAuthStore();
   const navigate = useNavigate();
 
-  const handleLogin = (e: any) => {
+  useEffect(() => {
+    if (isAuthenticated) navigate("/");
+  }, [isAuthenticated, navigate]);
+
+  const handleLogin = async (e: React.SubmitEvent<HTMLFormElement>) => {
     e.preventDefault();
+
     if (!email || !password) {
-      alert("Enter credientials");
+      toast.error("Enter credientials");
+      return;
     }
-    login({ email, password });
-    navigate("/")
+    await login({ email: email.trim(), password: password.trim() });
+    if (error) toast.error(error);
   };
 
   return (
@@ -59,9 +67,10 @@ const Login = () => {
               />
               <button
                 type="submit"
-                className="my-8 bg-blue-600 hover:bg-blue-700 w-full p-2 text-lg font-medium text-white rounded"
+                disabled={isLoading || !email || !password}
+                className="my-8 bg-blue-600 hover:bg-blue-700 w-full p-2 text-lg font-medium text-white rounded disabled:bg-blue-400"
               >
-                Log in
+                {isLoading ? "Logging in..." : "Log in"}
               </button>
             </form>
           </div>
