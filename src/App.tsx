@@ -5,6 +5,7 @@ import Home from "./pages/Home";
 import Register from "./pages/Register";
 import Login from "./pages/Login";
 import Dashboard from "./pages/Dashboard";
+import ProtectedRoute from "./utils/protectedRoute";
 
 const App = () => {
   return (
@@ -14,7 +15,14 @@ const App = () => {
         <Routes>
           <Route path="/register" element={<Register />} />
           <Route path="/login" element={<Login />} />
-          <Route path="/" element={<Home />} />
+          <Route
+            path="/"
+            element={
+              <ProtectedRoute>
+                <Home />
+              </ProtectedRoute>
+            }
+          />
           <Route path="/dashboard" element={<Dashboard />} />
         </Routes>
       </BrowserRouter>

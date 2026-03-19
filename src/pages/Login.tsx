@@ -1,10 +1,10 @@
 import { Link, useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
+import toast from "react-hot-toast";
 
 import SideImageComponent from "../components/SideImageComponent";
 import AppLogoComponent from "../components/AppLogoComponent";
 import useAuthStore from "../store/auth";
-import toast from "react-hot-toast";
 
 const Login = () => {
   const [email, setEmail] = useState("");
@@ -25,7 +25,7 @@ const Login = () => {
 
   useEffect(() => {
     if (isAuthenticated) {
-      navigate("/");
+      navigate("/", { replace: true });
     }
   }, [isAuthenticated, navigate]);
 
