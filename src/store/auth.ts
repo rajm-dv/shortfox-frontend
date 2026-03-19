@@ -2,6 +2,10 @@ import { create } from "zustand";
 import { persist } from "zustand/middleware";
 import axios from "axios";
 
+type Success = {
+  success: boolean;
+};
+
 interface AuthState {
   user: any | null;
   token: string | null;
@@ -9,7 +13,7 @@ interface AuthState {
   isLoading: boolean;
   isAuthenticated: boolean;
 
-  login: (data: { email: string; password: string }) => Promise<void>;
+  login: (data: { email: string; password: string }) => Promise<Success>;
   logout: () => void;
 }
 
@@ -28,7 +32,7 @@ const useAuthStore = create<AuthState>()(
       login: async ({ email, password }) => {
         set({ isLoading: true, error: null });
         try {
-          const res = await axios.post(`${API_URL}/api/v1/login`, {
+          const res = await axios.post(`${API_URL}/api/v1/auth/login`, {
             email,
             password,
           });
@@ -40,6 +44,7 @@ const useAuthStore = create<AuthState>()(
             isLoading: false,
             error: null,
           });
+          return { success: true };
         } catch (err: unknown) {
           let message = "Login failed";
           if (axios.isAxiosError(err)) {
@@ -51,6 +56,7 @@ const useAuthStore = create<AuthState>()(
             isLoading: false,
             token: null,
           });
+          return { success: false };
         }
       },
 

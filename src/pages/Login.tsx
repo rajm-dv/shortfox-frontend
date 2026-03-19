@@ -10,12 +10,8 @@ const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
-  const { login, isLoading, isAuthenticated, error } = useAuthStore();
+  const { login, isAuthenticated, isLoading, error } = useAuthStore();
   const navigate = useNavigate();
-
-  useEffect(() => {
-    if (isAuthenticated) navigate("/");
-  }, [isAuthenticated, navigate]);
 
   const handleLogin = async (e: React.SubmitEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -25,8 +21,17 @@ const Login = () => {
       return;
     }
     await login({ email: email.trim(), password: password.trim() });
-    if (error) toast.error(error);
   };
+
+  useEffect(() => {
+    if (isAuthenticated) {
+      navigate("/");
+    }
+  }, [isAuthenticated, navigate]);
+
+  useEffect(() => {
+    if (error) toast.error(error);
+  }, [error]);
 
   return (
     <div className="min-h-screen grid grid-cols-12 text-black/80">

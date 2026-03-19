@@ -5,8 +5,6 @@ import Home from "./pages/Home";
 import Register from "./pages/Register";
 import Login from "./pages/Login";
 import Dashboard from "./pages/Dashboard";
-import ProtectedRouter from "./hooks/protectedRoute";
-import PublicRoute from "./hooks/publicRoute";
 
 const App = () => {
   return (
@@ -15,30 +13,9 @@ const App = () => {
       <BrowserRouter>
         <Routes>
           <Route path="/register" element={<Register />} />
-          <Route
-            path="/login"
-            element={
-              <PublicRoute>
-                <Login />
-              </PublicRoute>
-            }
-          />
-          <Route
-            path="/"
-            element={
-              <ProtectedRouter>
-                <Home />
-              </ProtectedRouter>
-            }
-          />
-          <Route
-            path="/dashboard"
-            element={
-              <ProtectedRouter>
-                <Dashboard />
-              </ProtectedRouter>
-            }
-          />
+          <Route path="/login" element={<Login />} />
+          <Route path="/" element={<Home />} />
+          <Route path="/dashboard" element={<Dashboard />} />
         </Routes>
       </BrowserRouter>
     </>
