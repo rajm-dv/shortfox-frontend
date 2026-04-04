@@ -1,8 +1,11 @@
 import { ArrowRight } from "lucide-react";
+import { useState } from "react";
+
 import Footer from "../components/Footer";
 import Navbar from "../components/Navbar";
 
 const Home = () => {
+  const [origin, setOrigin] = useState("");
   return (
     <div className="px-20">
       <Navbar />
@@ -27,10 +30,12 @@ const Home = () => {
           <input
             name="origin"
             type="text"
+            onChange={(e) => setOrigin(e.target.value)}
+            value={origin}
             className="border border-slate-500 rounded w-full my-2 h-14 px-4 placeholder:text-slate-500"
             placeholder="https://example.com/my-long-url"
           />
-          <button className="text-lg font-semibold rounded text-white bg-blue-600 hover:bg-blue-800 py-3 px-5 mt-3 flex items-center">
+          <button className="text-lg font-semibold rounded text-white bg-blue-600 hover:bg-blue-800 py-3 px-5 mt-3 flex items-center disabled:bg-blue-400" disabled={!origin}>
             Get your link for free
             <ArrowRight className="ml-2" />
           </button>
