@@ -21,6 +21,7 @@ interface AuthState {
   }) => Promise<Success>;
   login: (data: { email: string; password: string }) => Promise<Success>;
   logout: () => void;
+  generateUrl: (data: { origin: string }) => Promise<void>;
 }
 
 const API_URL = import.meta.env.VITE_API_URL || "http://localhost:8787";
@@ -107,6 +108,21 @@ const useAuthStore = create<AuthState>()(
           token: null,
           isAuthenticated: false,
         });
+      },
+
+      // generate url
+      generateUrl: async ({ origin }) => {
+        set({ isLoading: true });
+        try {
+          const res = await axios.post(`${API_URL}/api/v1/app/create`, {
+            origin,
+          });
+          set({ isLoading: false });
+          console.log(res.data);
+        } catch (e: any) {
+          set({isLoading: false});
+          console.log(e.message);
+        }
       },
     }),
     {
