@@ -28,7 +28,7 @@ const API_URL = import.meta.env.VITE_API_URL || "http://localhost:8787";
 
 const useAuthStore = create<AuthState>()(
   persist(
-    (set) => ({
+    (set, get) => ({
       user: null,
       token: null,
       error: null,
@@ -114,13 +114,23 @@ const useAuthStore = create<AuthState>()(
       generateUrl: async ({ origin }) => {
         set({ isLoading: true });
         try {
-          const res = await axios.post(`${API_URL}/api/v1/app/create`, {
-            origin,
-          });
+          const token = get().token;
+
+          const res = await axios.post(
+            `${API_URL}/api/v1/app/create`,
+            {
+              origin,
+            },
+            {
+              headers: {
+                Authorization: `Bearer ${token}`,
+              },
+            },
+          );
           set({ isLoading: false });
           console.log(res.data);
         } catch (e: any) {
-          set({isLoading: false});
+          set({ isLoading: false });
           console.log(e.message);
         }
       },
